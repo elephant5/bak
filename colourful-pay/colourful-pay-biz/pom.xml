@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+            http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.colourful</groupId>
+		<artifactId>colourful-pay</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>colourful-pay-biz</artifactId>
+	<packaging>jar</packaging>
+	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/com.alibaba.cloud/spring-cloud-starter-alibaba-nacos-discovery -->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+			<version>2.2.1.RELEASE</version>
+		</dependency>
+
+		<!--必备: 配置中心客户端-->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+			<version>2.2.1.RELEASE</version>
+		</dependency>
+		<!--必备: 操作数据源相关-->
+		<dependency>
+			<groupId>com.colourful</groupId>
+			<artifactId>colourful-common-data</artifactId>
+		</dependency>
+		<!--必备：pigx安全模块-->
+		<dependency>
+			<groupId>com.colourful</groupId>
+			<artifactId>colourful-common-security</artifactId>
+		</dependency>
+		<!--必备: sentinel 依赖-->
+		<dependency>
+			<groupId>com.colourful</groupId>
+			<artifactId>colourful-common-sentinel</artifactId>
+		</dependency>
+		<!--必备: feign 依赖-->
+		<dependency>
+			<groupId>com.colourful</groupId>
+			<artifactId>colourful-common-feign</artifactId>
+		</dependency>
+
+		<!--必备: sentinel 依赖-->
+		<dependency>
+			<groupId>com.colourful</groupId>
+			<artifactId>colourful-common-sentinel</artifactId>
+		</dependency>
+		<!--mybatis-->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+		</dependency>
+		<!-- druid 连接池 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+		</dependency>
+		<!--数据库-->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+		<!--必备: log 依赖-->
+		<dependency>
+			<groupId>com.colourful</groupId>
+			<artifactId>colourful-common-log</artifactId>
+		</dependency>
+		<!--选配: swagger文档-->
+		<dependency>
+			<groupId>com.colourful</groupId>
+			<artifactId>colourful-common-swagger</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<!--支持动态路由配置 -->
+		<dependency>
+			<groupId>com.colourful</groupId>
+			<artifactId>colourful-common-gateway</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.colourful</groupId>
+			<artifactId>colourful-pay-api</artifactId>
+			<version>1.0.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.12</version>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.okhttp3</groupId>
+			<artifactId>okhttp</artifactId>
+		</dependency>
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!--spring cloud 公共版本定义-->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!--spring cloud alibaba-->
+			<dependency>
+				<groupId>com.alibaba.cloud</groupId>
+				<artifactId>spring-cloud-alibaba-dependencies</artifactId>
+				<version>${spring-cloud-alibaba.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<!--web 模块-->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+				<version>${spring-boot.version}</version>
+
+			</dependency>
+			<!--<dependency>-->
+				<!--<groupId>org.apache.httpcomponents</groupId>-->
+				<!--<artifactId>httpclient</artifactId>-->
+				<!--<version>4.5.3</version>-->
+			<!--</dependency>-->
+			<!--<dependency>-->
+				<!--<groupId>org.apache.tomcat.embed</groupId>-->
+				<!--<artifactId>tomcat-embed-jasper</artifactId>-->
+				<!--<version>7.0.59</version>-->
+			<!--</dependency>-->
+		</dependencies>
+	</dependencyManagement>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>io.fabric8</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<configuration>
+					<skip>false</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<delimiters>@</delimiters>
+					<useDefaultDelimiters>false</useDefaultDelimiters>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

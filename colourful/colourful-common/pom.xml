@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.colourful</groupId>
+		<artifactId>colourful</artifactId>
+		<version>3.9.0</version>
+	</parent>
+
+	<artifactId>colourful-common</artifactId>
+	<packaging>pom</packaging>
+
+	<description>colourful 公共聚合模块</description>
+
+	<modules>
+		<module>colourful-common-bom</module>
+		<module>colourful-common-core</module>
+		<module>colourful-common-data</module>
+		<module>colourful-common-datasource</module>
+		<module>colourful-common-feign</module>
+		<module>colourful-common-gateway</module>
+		<module>colourful-common-gray</module>
+		<module>colourful-common-job</module>
+		<module>colourful-common-log</module>
+		<module>colourful-common-oss</module>
+		<module>colourful-common-security</module>
+		<module>colourful-common-sentinel</module>
+		<module>colourful-common-sequence</module>
+		<module>colourful-common-swagger</module>
+		<module>colourful-common-transaction</module>
+	</modules>
+</project>

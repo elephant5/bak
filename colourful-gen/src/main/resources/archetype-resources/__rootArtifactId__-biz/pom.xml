@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+            http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>${groupId}</groupId>
+        <artifactId>${rootArtifactId}</artifactId>
+        <version>${version}</version>
+    </parent>
+
+    <artifactId>${artifactId}</artifactId>
+
+    <dependencies>
+        <!--必备: undertow容器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
+        <!--必备: spring boot web-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--必备: 注册中心客户端-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <!--必备: 配置中心客户端-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        <!--必备: 操作数据源相关-->
+        <dependency>
+            <groupId>com.colourful</groupId>
+            <artifactId>colourful-common-data</artifactId>
+        </dependency>
+        <!--必备：colourful安全模块-->
+        <dependency>
+            <groupId>com.colourful</groupId>
+            <artifactId>colourful-common-security</artifactId>
+        </dependency>
+        <!--必备: sentinel 依赖-->
+        <dependency>
+            <groupId>com.colourful</groupId>
+            <artifactId>colourful-common-sentinel</artifactId>
+        </dependency>
+        <!--必备: feign 依赖-->
+        <dependency>
+            <groupId>com.colourful</groupId>
+            <artifactId>colourful-common-feign</artifactId>
+        </dependency>
+        <!--必备: 依赖api模块-->
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>${rootArtifactId}-api</artifactId>
+            <version>${version}</version>
+        </dependency>
+        <!--必备: sentinel 依赖-->
+        <dependency>
+            <groupId>com.colourful</groupId>
+            <artifactId>colourful-common-sentinel</artifactId>
+        </dependency>
+        <!--mybatis-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+        <!-- druid 连接池 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
+        <!--数据库-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!--必备: log 依赖-->
+        <dependency>
+            <groupId>com.colourful</groupId>
+            <artifactId>colourful-common-log</artifactId>
+        </dependency>
+        <!--选配: swagger文档-->
+        <dependency>
+            <groupId>com.colourful</groupId>
+            <artifactId>colourful-common-swagger</artifactId>
+        </dependency>
+        <!--测试: spring boot test-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

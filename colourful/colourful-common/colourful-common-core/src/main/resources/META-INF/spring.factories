@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.colourful.colourful.common.core.config.JacksonConfig,\
+  com.colourful.colourful.common.core.config.MessageSourceConfig,\
+  com.colourful.colourful.common.core.config.RestTemplateConfig,\
+  com.colourful.colourful.common.core.util.SpringContextHolder

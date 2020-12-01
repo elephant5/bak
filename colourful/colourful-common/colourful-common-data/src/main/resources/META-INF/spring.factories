@@ -1,0 +1,9 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+    com.colourful.colourful.common.data.cache.RedisTemplateConfig,\
+    com.colourful.colourful.common.data.cache.RedisCacheManagerConfig,\
+    com.colourful.colourful.common.data.cache.RedisCacheAutoConfiguration,\
+    com.colourful.colourful.common.data.tenant.ColourfulTenantConfigProperties,\
+    com.colourful.colourful.common.data.tenant.TenantContextHolderFilter,\
+    com.colourful.colourful.common.data.tenant.ColourfulTenantConfiguration,\
+    com.colourful.colourful.common.data.mybatis.MybatisPlusConfiguration,\
+    com.colourful.colourful.common.data.resolver.WebMvcConfig

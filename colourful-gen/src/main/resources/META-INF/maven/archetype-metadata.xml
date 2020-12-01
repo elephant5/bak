@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor  name="beast-archetype"
+                       xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+                       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                       xsi:schemaLocation="
+            http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0
+            http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd">
+
+    <!--需要输入的属性-->
+    <requiredProperties>
+        <requiredProperty key="groupId">
+            <!--默认的groupId-->
+            <defaultValue>com.colourful</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="artifactId" >
+            <!--默认的artifactId-->
+            <defaultValue>demo</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="package">
+            <!--默认的包名和groupId一样-->
+            <defaultValue>${groupId}.${artifactId}</defaultValue>
+        </requiredProperty>
+    </requiredProperties>
+
+    <!--根目录-->
+    <fileSets>
+        <fileSet encoding="UTF-8" filtered="true">
+            <directory/>
+            <includes>
+                <include>.editorconfig</include>
+                <include>.gitignore</include>
+                <include>README.md</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+    <!--子模块-->
+    <modules>
+        <module id="${rootArtifactId}-biz" name="${rootArtifactId}-biz" dir="__rootArtifactId__-biz">
+            <fileSets>
+                <fileSet filtered="true" encoding="UTF-8" packaged="true">
+                    <directory>src/main/java</directory>
+                    <includes>
+                        <include>**/*.*</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" encoding="UTF-8" packaged="true">
+                    <directory>src/test/java</directory>
+                    <includes>
+                        <include>**/*.*</include>
+                    </includes>
+                </fileSet>
+                <fileSet encoding="UTF-8">
+                    <directory>src/main/resources</directory>
+                    <includes>
+                        <include>**/*.*</include>
+                    </includes>
+                </fileSet>
+                <fileSet encoding="UTF-8">
+                    <directory>src/test/resources</directory>
+                    <includes>
+                        <include>**/*.*</include>
+                    </includes>
+                </fileSet>
+            </fileSets>
+        </module>
+        <module id="${rootArtifactId}-api" name="${rootArtifactId}-api" dir="__rootArtifactId__-api">
+            <fileSets>
+                <fileSet filtered="true" encoding="UTF-8" packaged="true">
+                    <directory>src/main/java</directory>
+                    <includes>
+                        <include>**/*.*</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" encoding="UTF-8" packaged="true">
+                    <directory>src/test/java</directory>
+                    <includes>
+                        <include>**/*.*</include>
+                    </includes>
+                </fileSet>
+                <fileSet filtered="true" encoding="UTF-8">
+                    <directory>src/main/resources</directory>
+                    <includes>
+                        <include>**/*.*</include>
+                    </includes>
+                </fileSet>
+                <fileSet encoding="UTF-8">
+                    <directory>src/test/resources</directory>
+                    <includes>
+                        <include>**/*.*</include>
+                    </includes>
+                </fileSet>
+            </fileSets>
+        </module>
+    </modules>
+</archetype-descriptor>

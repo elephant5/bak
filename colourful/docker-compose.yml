@@ -1,0 +1,152 @@
+# 使用说明 V3.8.0
+# 1. 使用docker-compose  宿主机不需要配置host来发现
+# 2. 无需修改源码，根目录  docker-compose up 即可
+# 3. 静静等待服务启动
+
+version: '2'
+services:
+  colourful-mysql:
+    build:
+      context: ./db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    container_name: colourful-mysql
+    image: colourful-mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - ./colourful-mysql:/var/lib/mysql
+    command: --lower_case_table_names=1
+
+  colourful-xxl:
+    container_name: colourful-xxl
+    image: xuxueli/xxl-job-admin:2.2.0
+    restart: always
+    environment:
+      PARAMS: "--server.port=9080 --spring.datasource.url=jdbc:mysql://colourful-mysql:3306/colourfulx_job?Unicode=true&characterEncoding=UTF-8 --spring.datasource.username=root --spring.datasource.password=root"
+    ports:
+      - 9080:9080
+
+  colourful-redis:
+    container_name: colourful-redis
+    image: redis:5.0.7
+    restart: always
+    ports:
+      - 6379:6379
+
+  colourful-minio:
+    container_name: colourful-minio
+    image: minio/minio
+    command: server /data
+    ports:
+      - 9000:9000
+    volumes:
+      - ./data:/data
+      - ./config:/root/.minio
+    environment:
+      - MINIO_DOMAIN=colourful-minio
+      - MINIO_ACCESS_KEY=colourful
+      - MINIO_SECRET_KEY=colourful
+
+  colourful-register:
+    build:
+      context: ./colourful-register
+    restart: always
+    container_name: colourful-register
+    image: colourful-register
+    ports:
+      - 8848:8848
+
+  colourful-gateway:
+    build:
+      context: ./colourful-gateway
+    restart: always
+    container_name: colourful-gateway
+    image: colourful-gateway
+    ports:
+      - 9999:9999
+
+  colourful-auth:
+    build:
+      context: ./colourful-auth
+    restart: always
+    container_name: colourful-auth
+    image: colourful-auth
+
+  colourful-upms:
+    build:
+      context: ./colourful-upms/colourful-upms-biz
+    restart: always
+    container_name: colourful-upms
+    image: colourful-upms
+
+  colourful-monitor:
+    build:
+      context: ./colourful-visual/colourful-monitor
+    restart: always
+    image: colourful-monitor
+    container_name: colourful-monitor
+    ports:
+      - 5001:5001
+
+  colourful-daemon-quartz:
+    build:
+      context: ./colourful-visual/colourful-daemon-quartz
+    restart: always
+    image: colourful-daemon-quartz
+    container_name: colourful-daemon-quartz
+
+  colourful-daemon-elastic-job:
+    build:
+      context: ./colourful-visual/colourful-daemon-elastic-job
+    restart: always
+    image: colourful-daemon-elastic-job
+    container_name: colourful-daemon-elastic-job
+
+  colourful-codegen:
+    build:
+      context: ./colourful-visual/colourful-codegen
+    restart: always
+    image: colourful-codegen
+    container_name: colourful-codegen
+
+  colourful-mp-platform:
+    build:
+      context: ./colourful-visual/colourful-mp-platform
+    restart: always
+    image: colourful-mp-platform
+    container_name: colourful-mp-platform
+
+  colourful-pay-platform:
+    build:
+      context: ./colourful-visual/colourful-pay-platform
+    restart: always
+    image: colourful-pay-platform
+    container_name: colourful-pay-platform
+
+  colourful-oa-platform:
+    build:
+      context: ./colourful-visual/colourful-oa-platform
+    restart: always
+    image: colourful-oa-platform
+    container_name: colourful-oa-platform
+
+  colourful-tx-manager:
+    build:
+      context: ./colourful-visual/colourful-tx-manager
+    restart: always
+    image: colourful-tx-manager
+    container_name: colourful-tx-manager
+    ports:
+      - 5004:5004
+      - 9998:9998
+
+  colourful-sentinel:
+    build:
+      context: ./colourful-visual/colourful-sentinel-dashboard
+    restart: always
+    image: colourful-sentinel
+    container_name: colourful-sentinel
+    ports:
+      - 5020:5020

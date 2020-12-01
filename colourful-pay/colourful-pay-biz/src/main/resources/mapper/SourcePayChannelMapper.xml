@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.colourful.colourful.pay.mapper.SourcePayChannelMapper">
+
+	<!--查询渠道下支持的支付方式-->
+	<select id="selectPayChannelInfoList" resultType="com.colourful.colourful.pay.dto.res.SourcePayChannelInfoResDto">
+		SELECT s.source,pci.id as payChannelId,s.frontend_url,pci.short_name,pci.pay_channel_name,pci.logo
+		from source_pay_channel spc
+		LEFT JOIN source s on s.source = spc.source
+		LEFT JOIN pay_channel_info pci on pci.id = spc.pay_channel_id
+		and s.del_flag = '0'
+		and pci.del_flag = '0'
+		where spc.source = #{source}
+	</select>
+
+</mapper>

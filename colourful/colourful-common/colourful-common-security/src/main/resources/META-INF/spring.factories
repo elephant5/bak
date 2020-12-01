@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.colourful.colourful.common.security.component.GlobalExceptionHandlerResolver,\
+  com.colourful.colourful.common.security.component.ColourfulTokenEnhancer,\
+  com.colourful.colourful.common.security.component.ColourfulSecurityInnerAspect,\
+  com.colourful.colourful.common.security.listener.AuthenticationFailureEventListener,\
+  com.colourful.colourful.common.security.listener.AuthenticationSuccessEventListener
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.colourful</groupId>
+    <artifactId>colourful-order</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>colourful-order</name>
+	<parent>
+		<groupId>com.colourful</groupId>
+		<artifactId>base-root</artifactId>
+		<version>1.0.0</version>
+		<relativePath/>
+	</parent>
+
+
+    <!--项目子模块-->
+    <modules>
+        <module>colourful-order-api</module>
+        <module>colourful-order-biz</module>
+    </modules>
+
+
+
+</project>
